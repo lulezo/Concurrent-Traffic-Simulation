@@ -73,7 +73,7 @@ void TrafficLight::cycleThroughPhases()
     // Initialize variables
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(40, 60); // Random duration between 4 and 6 seconds
+    std::uniform_int_distribution<> dis(4000, 6000); // Random duration between 4 and 6 seconds
     double cycleDuration = dis(gen);
     std::chrono::time_point<std::chrono::system_clock> lastUpdate;
 
