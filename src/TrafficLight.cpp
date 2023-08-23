@@ -87,9 +87,9 @@ void TrafficLight::cycleThroughPhases()
             // Toggle between red and green
         {
             _currentPhase = (_currentPhase == TrafficLightPhase::red) ? TrafficLightPhase::green : TrafficLightPhase::red;
+            _msg.send(std::move(_currentPhase));
+            cycleDuration = dis(gen); // Generate a new cycle duration
+            lastUpdate = std::chrono::system_clock::now(); // Reset lastUpdate after phase change
         }
-        _msg.send(std::move(_currentPhase));
-        cycleDuration = dis(gen); // Generate a new cycle duration
-        lastUpdate = std::chrono::system_clock::now(); // Reset lastUpdate after phase change
     }
 }
